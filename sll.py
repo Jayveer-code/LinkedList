@@ -21,7 +21,7 @@ class LinkedList:
             # Step 5: (Condition no 3) If it is Not None that what to do
             new_node = self.head  
             while new_node:
-                print(new_node.data)
+                print(new_node.data,end = "  --->  ")
                 new_node = new_node.next
 
     def add_beginning(self, data):
@@ -40,11 +40,49 @@ class LinkedList:
             while n.next is not None: # Increment Next Value Until Condition is True
                 n=n.next 
             n.next=new_node
-        
-# Example usage:
+
+    def add_after(self,data,x):#x iis uuse For target element
+        n=self.head
+        #when n is not none then target element
+        while n is not None:
+            if x==n.data:
+                break
+            n=n.next
+            #when n is  none then print msg
+        if n is None:
+            print("Element Not Present in LL..")
+        else:
+            new_node=Node(data)
+            new_node.next=n.next
+            n.next=new_node
+
+    def add_before(self, data, x):
+        if self.head is None:
+            print("Linked List is Empty")
+            return
+        if self.head.data == x:
+            new_node = Node(data)
+            new_node.next = self.head
+            self.head = new_node
+            return
+        n = self.head
+        while n.next is not None:
+            if n.next.data == x:
+                break
+            n = n.next
+        if n.next is None:
+            print("Element", x, "not found in the linked list.")
+            return
+        new_node = Node(data)
+        new_node.next = n.next
+        n.next = new_node
+
+
 LL1 = LinkedList()
 LL1.add_beginning(30)
 LL1.add_beginning(20)
 LL1.add_beginning(10)
 LL1.add_end(40)
+LL1.add_before(60,40)
+LL1.add_before(5,10)
 LL1.print_list()
