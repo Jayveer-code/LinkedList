@@ -109,21 +109,13 @@ class LinkedList:
         else:
             n.next=n.next.next
 
-            
-        
-
-
-
-
-
 LL1 = LinkedList()
 LL1.add_beginning(11)
 LL1.add_end(14)
 LL1.add_after(12,11)
 LL1.add_after(13,12)
 LL1.add_before(10,11)
-LL1.del_by_value(13)
+# LL1.del_by_value(14)
 # LL1.del_begin()
 # LL1.del_end()
-
 LL1.print_list()
