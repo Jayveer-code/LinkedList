@@ -72,17 +72,58 @@ class LinkedList:
             n = n.next
         if n.next is None:
             print("Element", x, "not found in the linked list.")
-            return
+            return 
         new_node = Node(data)
         new_node.next = n.next
         n.next = new_node
 
+    def del_begin(self):
+        if self.head is None:
+            print("Linked List is Empty so we can not Delete Any Nodes!. ")
+        else:
+            self.head=self.head.next
+
+    def del_end(self):
+        if self.head is None:
+            print("Linked List is Empty so we can not Delete Any Nodes!. ")
+        else:
+            n=self.head
+            while n.next.next is not None:
+                n=n.next
+            n.next=None
+
+    def del_by_value(self,x):
+        if self.head is None:
+            print("Linked List is Empty so we can not Delete Any Nodes!. ")
+            return
+        if x==self.head.data:
+            self.head=self.head.next
+            return
+        n=self.head
+        while n.next is not None:
+            if x==n.next.data:
+                break
+            n=n.next
+        if n.next is None:
+            print("Element", x, "not found in the linked list.")
+        else:
+            n.next=n.next.next
+
+            
+        
+
+
+
+
 
 LL1 = LinkedList()
-LL1.add_beginning(30)
-LL1.add_beginning(20)
-LL1.add_beginning(10)
-LL1.add_end(40)
-LL1.add_before(60,40)
-LL1.add_before(5,10)
+LL1.add_beginning(11)
+LL1.add_end(14)
+LL1.add_after(12,11)
+LL1.add_after(13,12)
+LL1.add_before(10,11)
+LL1.del_by_value(13)
+# LL1.del_begin()
+# LL1.del_end()
+
 LL1.print_list()
