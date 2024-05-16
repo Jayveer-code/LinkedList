@@ -107,14 +107,42 @@ class LinkedList:
                 self.head = new_node
             n.pref = new_node
 
+    def del_begin(self):
+        if self.head is None:
+            print("Link list is empty so you can't delete any node.. ")
+            return
+        if self.head.nref is None:
+            self.head=None
+            print("Dll is empty after deleting a Node!..")
+        else:
+            self.head=self.head.nref
+            self.head.pref=None
 
-        
+    def delete_end(self):
+        if self.head is None:
+            print("Link list is empty so you can't delete any node.. ")
+            return
+        if self.head.nref is None:
+            self.head=None
+            print("Dll is empty after deleting a Node!..")
+        else:
+            n=self.head
+            while n.nref is not None:
+                n=n.nref
+            n.pref.nref=None
+
+
+
+
 dll=LinkedList()
-dll.insert_empty(10)
-dll.add_begin(20)
+dll.insert_empty(20)
+dll.add_begin(5)
 dll.add_end(30)
+dll.add_end(60)
 dll.add_after(40,30)
-dll.add_before(5,10)
+dll.add_before(10,20)
+dll.del_begin()
+dll.delete_end()
 dll.print_list()
 print("Forward ===>> Travesal List")
 dll.print_list_reverse()
